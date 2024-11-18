@@ -1,6 +1,6 @@
 package com.vinctus.oql_rdb
 
-import typings.node.tlsMod.ConnectionOptions
+import com.vinctus.oql.{AbstractOQL, Datatype, Fixed, JSConversions, JSON, JSONType, JSResultBuilder, OQLConnection, OQLQuery, StarOQLProject}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -9,7 +9,6 @@ import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
 import scala.scalajs.js.{Promise, |}
 import scala.util.matching.Regex
-import io.github.edadma.rdb
 
 @JSExportTopLevel("OQL_MEM")
 class OQL_RDB_JS(

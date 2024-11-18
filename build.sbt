@@ -25,7 +25,9 @@ lazy val oql_rdb = crossProject(JSPlatform, JVMPlatform, NativePlatform)
     githubRepository                        := name.value,
     libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.19" % "test",
     libraryDependencies ++= Seq(
-      "com.vinctus" %%% "oql-core" % "1.1.31",
+      "com.vinctus"      %%% "oql-core" % "0.0.3",
+      "io.github.edadma" %%% "dal"      % "0.1.10",
+      "io.github.edadma" %%% "rdb"      % "0.0.1",
 //      "com.github.scopt" %%% "scopt" % "4.1.0",
 //      "com.lihaoyi" %%% "pprint" % "0.9.0" % "test",
     ),

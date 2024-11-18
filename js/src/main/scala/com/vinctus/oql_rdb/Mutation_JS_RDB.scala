@@ -1,5 +1,6 @@
 package com.vinctus.oql_rdb
 
+import com.vinctus.oql.{Entity, Mutation}
 import com.vinctus.sjs_utils.{jsObject, toJS, toMap}
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

@@ -12,6 +12,7 @@ import com.vinctus.oql.{
   ScalaConversions,
   ScalaPlainResultBuilder,
   StarOQLProject,
+  ScalaJSResultBuilder
 }
 import com.vinctus.sjs_utils.{DynamicMap, toJS}
 

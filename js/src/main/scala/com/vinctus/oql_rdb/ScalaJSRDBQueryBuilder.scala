@@ -3,8 +3,7 @@ package com.vinctus.oql_rdb
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.scalajs.js
-
-import com.vinctus.oql.{Fixed, OQLQuery}
+import com.vinctus.oql.{AbstractOQL, AttributeOQLExpression, Fixed, GroupedOQLExpression, Ident, InfixOQLExpression, JSON, OQLOrdering, OQLQuery, ScalaPlainResultBuilder}
 
 class ScalaJSRDBQueryBuilder private[oql_rdb] (
     private val oql: OQL_RDB_ScalaJS,
