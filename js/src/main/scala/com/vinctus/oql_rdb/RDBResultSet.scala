@@ -1,7 +1,7 @@
 package com.vinctus.oql_rdb
 
-import scala.io.github.edadma.dal
-import scala.io.github.edadma.rdb.{
+import io.github.edadma.dal
+import io.github.edadma.rdb.{
   Row,
   TableValue,
   ArrayValue,
