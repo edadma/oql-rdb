@@ -1,4 +1,4 @@
-package io.github.edadma.cross_template
+package com.vinctus.oql_rdb
 
 @main def run(): Unit =
   println("Hello world")
