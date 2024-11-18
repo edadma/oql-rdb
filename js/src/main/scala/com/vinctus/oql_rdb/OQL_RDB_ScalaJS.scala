@@ -12,7 +12,7 @@ import com.vinctus.oql.{
   ScalaConversions,
   ScalaPlainResultBuilder,
   StarOQLProject,
-  ScalaJSResultBuilder
+  ScalaJSResultBuilder,
 }
 import com.vinctus.sjs_utils.{DynamicMap, toJS}
 
@@ -46,8 +46,8 @@ class OQL_RDB_ScalaJS(
 //  def ccQueryOne[T <: Product: Mappable](oql: String, fixed: String = null, at: Any = null): Future[Option[T]] =
 //    queryOne(oql, fixed, at) map (_.map(m => map2cc[T](m.asInstanceOf[Map[String, Any]])))
 
-  def queryOne(oql: String, fixed: String = null, at: Any = null): Future[Option[DynamicMap]] =
-    queryOne(parseQuery(oql), oql, fixedEntity(fixed, at))
+  def queryOne(oql: String, fixed: String = null, at: Any = null): Future[Option[Map[String, Any]]] =
+    super.queryOne(parseQuery(oql), oql, fixedEntity(fixed, at))
 
   def jsQueryMany[T <: js.Object](oql: String, fixed: String = null, at: Any = null): Future[T] =
     (queryMany(oql, fixed, at) map (toJS(_))).asInstanceOf[Future[T]]

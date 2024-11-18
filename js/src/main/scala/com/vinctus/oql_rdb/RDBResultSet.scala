@@ -2,24 +2,27 @@ package com.vinctus.oql_rdb
 
 import io.github.edadma.dal
 import io.github.edadma.rdb.{
-  Row,
-  TableValue,
   ArrayValue,
   EnumValue,
   NullValue,
   NumberValue,
   ObjectValue,
+  Row,
+  TableValue,
   TextValue,
   TimestampValue,
   UUIDValue,
   Value,
 }
+
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters.*
 import com.vinctus.oql.{OQLResultSet, OQLResultSetValue}
 
+import scala.compiletime.uninitialized
+
 class RDBResultSet(rs: Iterator[Row]) extends OQLResultSet {
-  private var row: Row = _
+  private var row: Row = uninitialized
 
   def next: Boolean =
     if (rs.hasNext) {
