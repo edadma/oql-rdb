@@ -4,9 +4,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.scalajs.js
 
-class ScalaJSRDBQueryBuilder private[oql] (
+class ScalaJSRDBQueryBuilder private[oql_rdb] (
     private val oql: OQL_RDB_ScalaJS,
-    private[oql] val q: OQLQuery,
+    private[oql_rdb] val q: OQLQuery,
     fixed: Fixed,
 ) {
   private def check = if (q.source eq null) sys.error("QueryBuilder: no source was given") else this

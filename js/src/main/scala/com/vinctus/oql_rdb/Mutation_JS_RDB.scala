@@ -7,7 +7,7 @@ import scala.scalajs.js
 import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.annotation.JSExport
 
-class Mutation_JS_RDB private[oql] (oql: OQL_RDB_JS, entity: Entity) extends Mutation(oql, entity) {
+class Mutation_JS_RDB private[oql_rdb] (oql: OQL_RDB_JS, entity: Entity) extends Mutation(oql, entity) {
 
   @JSExport("insert")
   def jsInsert(obj: js.Dictionary[js.Any]): js.Promise[js.Any] = insert(toMap(obj)) map toJS toJSPromise

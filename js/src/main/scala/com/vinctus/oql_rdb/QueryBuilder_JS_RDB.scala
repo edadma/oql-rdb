@@ -6,7 +6,7 @@ import scala.scalajs.js.JSConverters.*
 import scala.scalajs.js.annotation.{JSExport, JSExportAll}
 
 @JSExportAll
-class QueryBuilder_JS_RDB private[oql] (private val oql: OQL_RDB_JS, private[oql] val q: OQLQuery, fixed: Fixed) {
+class QueryBuilder_JS_RDB private[oql_rdb] (private val oql: OQL_RDB_JS, private[oql_rdb] val q: OQLQuery, fixed: Fixed) {
   private def check = if (q.source eq null) sys.error("QueryBuilder: no source was given") else this
 
   private class DoNothingQueryBuilder extends QueryBuilder_JS_RDB(oql, q, fixed) {
