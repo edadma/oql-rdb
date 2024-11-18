@@ -19,14 +19,13 @@ lazy val oql_rdb = crossProject(JSPlatform, JVMPlatform, NativePlatform)
         "-language:existentials",
         "-language:dynamics",
       ),
-    organization     := "io.github.edadma",
-    githubOwner      := "edadma",
-    githubRepository := name.value,
-//    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.19" % "test",
-//    libraryDependencies ++= Seq(
-//      "io.github.edadma" %%% "cross-platform" % "0.1.5"
-//    ),
+    organization := "com.vinctus",
+    githubOwner  := "edadma", // this is temporary until the transfer of ownership
+    resolvers += "GitHub Packages" at "https://maven.pkg.github.com/vinctustech/sjs-utils",
+    githubRepository                        := name.value,
+    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.19" % "test",
     libraryDependencies ++= Seq(
+      "com.vinctus" %%% "oql-core" % "1.1.31",
 //      "com.github.scopt" %%% "scopt" % "4.1.0",
 //      "com.lihaoyi" %%% "pprint" % "0.9.0" % "test",
     ),

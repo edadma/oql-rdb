@@ -1,4 +1,4 @@
-package com.vinctus.oql
+package com.vinctus.oql_rdb
 
 import com.vinctus.sjs_utils.{DynamicMap, toJS}
 

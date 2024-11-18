@@ -1,7 +1,4 @@
-package com.vinctus.oql
-
-import io.github.edadma.rdb
-import io.github.edadma.rdb.{CreateTableResult, InsertResult, MemoryDB, QueryResult, UpdateResult, executeSQL}
+package com.vinctus.oql_rdb
 
 import scala.collection.mutable
 import scala.concurrent.Future
@@ -20,8 +17,8 @@ class RDBConnection(val dataSource: RDBDataSource)(implicit ec: scala.concurrent
 //      case CreateTableResult(_) => Iterator()
           case QueryResult(table)    => table.data.iterator
           case InsertResult(_, auto) => auto.data.iterator
-          case UpdateResult(_)       => Iterator()
-      )
+          case UpdateResult(_)       => Iterator(),
+      ),
     )
 
   private val varRegex = "$([0-9_]+)".r
@@ -35,7 +32,7 @@ class RDBConnection(val dataSource: RDBDataSource)(implicit ec: scala.concurrent
           val idx = m.group(1).toInt
 
           if idx >= parameters.length then sys.error(s"substitute: parameter '$idx' not found")
-          else Regex.quoteReplacement(subsrender(parameters(idx)))
+          else Regex.quoteReplacement(subsrender(parameters(idx))),
       )
 
   def subsrender(a: Any): String =

@@ -1,4 +1,4 @@
-package com.vinctus.oql
+package com.vinctus.oql_rdb
 
 //import com.vinctus.mappable.{Mappable, map2cc}
 
@@ -9,7 +9,7 @@ import scala.scalajs.js
 class ScalaJSRDBQueryBuilder private[oql] (
     private val oql: OQL_RDB_ScalaJS,
     private[oql] val q: OQLQuery,
-    fixed: Fixed
+    fixed: Fixed,
 ) {
   private def check = if (q.source eq null) sys.error("QueryBuilder: no source was given") else this
 
@@ -85,9 +85,9 @@ class ScalaJSRDBQueryBuilder private[oql] (
         select =
           if (q.select.isDefined)
             Some(InfixOQLExpression(GroupedOQLExpression(q.select.get), "AND", GroupedOQLExpression(sel)))
-          else Some(sel)
+          else Some(sel),
       ),
-      fixed
+      fixed,
     )
   }
 

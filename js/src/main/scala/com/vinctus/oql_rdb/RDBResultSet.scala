@@ -1,23 +1,8 @@
-package com.vinctus.oql
+package com.vinctus.oql_rdb
 
-import io.github.edadma.rdb.{
-  ArrayValue,
-  NullValue,
-  NumberValue,
-  ObjectValue,
-  Row,
-  TableValue,
-  TextValue,
-  TimestampValue,
-  UUIDValue,
-  EnumValue,
-  Value
-}
-import io.github.edadma.dal
-import pprint.*
-
+import scala.io.github.edadma.dal
 import scala.scalajs.js
-import js.JSConverters._
+import scala.scalajs.js.JSConverters.*
 
 class RDBResultSet(rs: Iterator[Row]) extends OQLResultSet {
   private var row: Row = _
@@ -44,7 +29,7 @@ def unpack(v: Value): Any =
       value.toString // todo: js hack (to retain decimals even if they are zero)
     case TextValue(s)      => s
     case UUIDValue(id)     => id
-    case TimestampValue(t) => new js.Date(t.toISOString) // todo: js hack
+    case TimestampValue(t) => new js.Date(t.toISOString)  // todo: js hack
     case ArrayValue(data)  => (data map unpack) toJSArray // todo: js hack
     case ObjectValue(properties) =>
       (properties map { case (k, v) => k -> unpack(v) }).toMap toJSDictionary // todo: js hack

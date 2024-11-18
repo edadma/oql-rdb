@@ -1,4 +1,4 @@
-package com.vinctus.oql
+package com.vinctus.oql_rdb
 
 import scala.scalajs.js
 
@@ -47,18 +47,18 @@ class RDBDataSource(implicit ec: scala.concurrent.ExecutionContext) extends SQLD
     }
 
   val resultArrayFunctionStart: String = "TABLE("
-  val resultArrayFunctionEnd: String = ")"
+  val resultArrayFunctionEnd: String   = ")"
   val rowSequenceFunctionStart: String = ""
-  val rowSequenceFunctionEnd: String = ""
-  val typeFunction: Option[String] = Some("TYPEOF(?)")
-  val convertFunction: Option[String] = None
-  val caseSensitive: Boolean = true
+  val rowSequenceFunctionEnd: String   = ""
+  val typeFunction: Option[String]     = Some("TYPEOF(?)")
+  val convertFunction: Option[String]  = None
+  val caseSensitive: Boolean           = true
   val functionReturnType: Map[(String, Int), List[Datatype] => Datatype] =
     Map[(String, Int), List[Datatype] => Datatype](
       ("COUNT", 1) -> (_ => IntegerType), // todo: this should really be 'BigintType'
-      ("MIN", 1) -> (_.head),
-      ("MAX", 1) -> (_.head),
-      ("AVG", 1) -> (_ => FloatType)
+      ("MIN", 1)   -> (_.head),
+      ("MAX", 1)   -> (_.head),
+      ("AVG", 1)   -> (_ => FloatType),
     )
   val builtinVariables =
     Map("CURRENT_DATE" -> DateType, "CURRENT_TIMESTAMP" -> TimestampType, "CURRENT_TIME" -> TimeType)
