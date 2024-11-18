@@ -1,9 +1,12 @@
 package com.vinctus.oql_rdb
 
+import io.github.edadma.rdb.{MemoryDB, executeSQL, QueryResult, InsertResult, UpdateResult}
+
 import scala.collection.mutable
 import scala.concurrent.Future
 import scala.scalajs.js
 import scala.util.matching.Regex
+import com.vinctus.oql.{OQLConnection, OQLResultSet, DataModel}
 
 class RDBConnection(val dataSource: RDBDataSource)(implicit ec: scala.concurrent.ExecutionContext)
     extends OQLConnection:

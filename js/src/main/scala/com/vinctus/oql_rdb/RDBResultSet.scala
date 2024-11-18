@@ -1,8 +1,22 @@
 package com.vinctus.oql_rdb
 
 import scala.io.github.edadma.dal
+import scala.io.github.edadma.rdb.{
+  Row,
+  TableValue,
+  ArrayValue,
+  EnumValue,
+  NullValue,
+  NumberValue,
+  ObjectValue,
+  TextValue,
+  TimestampValue,
+  UUIDValue,
+  Value,
+}
 import scala.scalajs.js
 import scala.scalajs.js.JSConverters.*
+import com.vinctus.oql.{OQLResultSet, OQLResultSetValue}
 
 class RDBResultSet(rs: Iterator[Row]) extends OQLResultSet {
   private var row: Row = _
