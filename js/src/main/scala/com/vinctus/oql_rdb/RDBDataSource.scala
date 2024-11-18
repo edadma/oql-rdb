@@ -1,5 +1,24 @@
 package com.vinctus.oql_rdb
 
+import com.vinctus.oql.{
+  BigintType,
+  BooleanType,
+  Datatype,
+  DateType,
+  DecimalType,
+  EnumType,
+  FloatType,
+  IntegerType,
+  JSONType,
+  ManyToOneType,
+  SQLDataSource,
+  TextType,
+  TimeType,
+  TimestampType,
+  TypeSpecifier,
+  UUIDType,
+}
+
 import scala.scalajs.js
 
 class RDBDataSource(implicit ec: scala.concurrent.ExecutionContext) extends SQLDataSource {

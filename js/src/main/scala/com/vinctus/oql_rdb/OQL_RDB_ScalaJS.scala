@@ -1,5 +1,18 @@
 package com.vinctus.oql_rdb
 
+import com.vinctus.oql.{
+  AbstractOQL,
+  Datatype,
+  Fixed,
+  JSON,
+  JSONType,
+  Mutation,
+  OQLConnection,
+  OQLQuery,
+  ScalaConversions,
+  ScalaPlainResultBuilder,
+  StarOQLProject,
+}
 import com.vinctus.sjs_utils.{DynamicMap, toJS}
 
 import scala.concurrent.Future

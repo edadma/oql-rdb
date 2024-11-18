@@ -4,6 +4,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.scalajs.js
 
+import com.vinctus.oql.{Fixed, OQLQuery}
+
 class ScalaJSRDBQueryBuilder private[oql_rdb] (
     private val oql: OQL_RDB_ScalaJS,
     private[oql_rdb] val q: OQLQuery,
