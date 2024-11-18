@@ -1,4 +1,4 @@
-package com.vinctus.oql
+package com.vinctus.oql_rdb
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -77,9 +77,9 @@ class QueryBuilder_JS_RDB private[oql] (private val oql: OQL_RDB_JS, private[oql
         select =
           if (q.select.isDefined)
             Some(InfixOQLExpression(GroupedOQLExpression(q.select.get), "AND", GroupedOQLExpression(sel)))
-          else Some(sel)
+          else Some(sel),
       ),
-      fixed
+      fixed,
     )
   }
 

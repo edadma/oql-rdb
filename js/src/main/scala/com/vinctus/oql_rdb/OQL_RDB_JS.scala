@@ -1,4 +1,4 @@
-package com.vinctus.oql
+package com.vinctus.oql_rdb
 
 import typings.node.tlsMod.ConnectionOptions
 
@@ -13,11 +13,11 @@ import io.github.edadma.rdb
 
 @JSExportTopLevel("OQL_MEM")
 class OQL_RDB_JS(
-    dm: String
+    dm: String,
 ) extends AbstractOQL(
       dm,
       new RDBDataSource,
-      JSConversions
+      JSConversions,
     ) {
 
   def execute[R](action: OQLConnection => Future[R]): Future[R] = action(connect)
@@ -36,7 +36,7 @@ class OQL_RDB_JS(
       oql: String,
       parameters: js.UndefOr[js.Any] = js.undefined,
       fixed: js.UndefOr[String] = null,
-      at: js.Any = null
+      at: js.Any = null,
   ): js.Promise[Int] =
     count(substitute(oql, parameters), fixed.orNull, at).toJSPromise
 
@@ -45,7 +45,7 @@ class OQL_RDB_JS(
       oql: String,
       parameters: js.UndefOr[js.Any] = js.undefined,
       fixed: js.UndefOr[String] = null,
-      at: js.Any = null
+      at: js.Any = null,
   ): js.Promise[js.UndefOr[Any]] = {
     val subst = substitute(oql, parameters)
 
@@ -64,7 +64,7 @@ class OQL_RDB_JS(
       oql: String,
       parameters: js.UndefOr[js.Any] = js.undefined,
       fixed: js.UndefOr[String] = null,
-      at: js.Any = null
+      at: js.Any = null,
   ): js.Promise[js.Array[js.Any]] = {
     val subst = substitute(oql, parameters)
 
@@ -81,7 +81,7 @@ class OQL_RDB_JS(
     new QueryBuilder_JS_RDB(
       this,
       OQLQuery(null, null, null, List(StarOQLProject), None, None, None, None, None),
-      fixedEntity(fixed.orNull, at)
+      fixedEntity(fixed.orNull, at),
     )
 
   @JSExport
@@ -111,7 +111,7 @@ class OQL_RDB_JS(
           parameters.asInstanceOf[js.Dictionary[Any]] get m.group(1) match {
             case None        => sys.error(s"template: parameter '${m.group(1)}' not found")
             case Some(value) => Regex.quoteReplacement(subsrender(value))
-          }
+          },
       )
 
   def subsrender(a: Any): String =

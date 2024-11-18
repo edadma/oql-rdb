@@ -1,7 +1,5 @@
 package com.vinctus.oql_rdb
 
-//import com.vinctus.mappable.{Mappable, map2cc}
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.scalajs.js

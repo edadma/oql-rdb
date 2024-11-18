@@ -1,10 +1,6 @@
-package com.vinctus.oql
+package com.vinctus.oql_rdb
 
 import com.vinctus.sjs_utils.{DynamicMap, toJS}
-
-import scala.scalajs.js.annotation.JSExportTopLevel
-//import com.vinctus.mappable.{Mappable, map2cc}
-import typings.node.tlsMod.ConnectionOptions
 
 import scala.concurrent.Future
 import scala.scalajs.js
@@ -12,12 +8,12 @@ import scala.scalajs.js.|
 import scala.util.matching.Regex
 
 class OQL_RDB_ScalaJS(
-    dm: String
+    dm: String,
 )(implicit ec: scala.concurrent.ExecutionContext)
     extends AbstractOQL(
       dm,
       new RDBDataSource,
-      ScalaConversions
+      ScalaConversions,
     )
     with Dynamic {
 
@@ -53,7 +49,7 @@ class OQL_RDB_ScalaJS(
       oql: String,
       fixed: String = null,
       at: Any = null,
-      parameters: Map[String, Any] = Map()
+      parameters: Map[String, Any] = Map(),
   ): Future[List[DynamicMap]] = {
     val subst = substitute(oql, parameters)
 
@@ -65,7 +61,7 @@ class OQL_RDB_ScalaJS(
     new ScalaJSRDBQueryBuilder(
       this,
       OQLQuery(null, null, null, List(StarOQLProject), None, None, None, None, None),
-      fixedEntity(fixed, at)
+      fixedEntity(fixed, at),
     )
 
   def json(oql: String, fixed: String = null, at: Any = null, parameters: Map[String, Any] = Map()): Future[String] = {
@@ -87,7 +83,7 @@ class OQL_RDB_ScalaJS(
           parameters get m.group(1) match {
             case None        => sys.error(s"template: parameter '${m.group(1)}' not found")
             case Some(value) => Regex.quoteReplacement(subsrender(value))
-          }
+          },
       )
   }
 

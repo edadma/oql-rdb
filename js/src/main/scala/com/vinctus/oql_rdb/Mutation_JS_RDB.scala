@@ -1,4 +1,4 @@
-package com.vinctus.oql
+package com.vinctus.oql_rdb
 
 import com.vinctus.sjs_utils.{jsObject, toJS, toMap}
 
@@ -14,7 +14,7 @@ class Mutation_JS_RDB private[oql] (oql: OQL_RDB_JS, entity: Entity) extends Mut
 
   @JSExport("delete")
   def jsDelete(e: js.Any): js.Promise[Unit] = delete(
-    if (jsObject(e)) e.asInstanceOf[js.Dictionary[String]](entity.pk.get.name) else e
+    if (jsObject(e)) e.asInstanceOf[js.Dictionary[String]](entity.pk.get.name) else e,
   ) toJSPromise
 
   @JSExport("link")
@@ -37,14 +37,14 @@ class Mutation_JS_RDB private[oql] (oql: OQL_RDB_JS, entity: Entity) extends Mut
   def jsUpdate(e: js.Any, updates: js.Any): js.Promise[js.Any] =
     update(
       if (jsObject(e)) e.asInstanceOf[js.Dictionary[Any]](entity.pk.get.name) else e,
-      toMap(updates)
+      toMap(updates),
     ) map toJS toJSPromise
 
   @JSExport("bulkUpdate")
   def jsBulkUpdate(updates: js.Array[js.Array[js.Any]]): js.Promise[Unit] =
     bulkUpdate(updates.toList map { (u: js.Array[js.Any]) =>
       (if (jsObject(u.head)) u.head.asInstanceOf[js.Dictionary[Any]](entity.pk.get.name) else u.head) -> toMap(
-        u.tail.head
+        u.tail.head,
       )
     }).toJSPromise
 
