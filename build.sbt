@@ -43,7 +43,8 @@ lazy val oql_rdb = crossProject(JSPlatform, JVMPlatform, NativePlatform)
   )
   .jsSettings(
     jsEnv := new org.scalajs.jsenv.nodejs.NodeJSEnv(),
-    //    Test / scalaJSUseMainModuleInitializer := true,
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
+      //    Test / scalaJSUseMainModuleInitializer := true,
     //    Test / scalaJSUseTestModuleInitializer := false,
     Test / scalaJSUseMainModuleInitializer      := false,
     Test / scalaJSUseTestModuleInitializer      := true,
