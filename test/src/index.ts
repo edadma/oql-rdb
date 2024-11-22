@@ -20,4 +20,6 @@ import {OQL_MEM} from '@vinctus/oql-mem'
   const data = await db.queryMany('x')
 
   console.log(data)
+
+  console.log(await db.raw('SELECT * FROM x'))
 })()
